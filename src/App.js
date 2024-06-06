@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Product from './Product';
-//import Ingredients from "./ingredients";
+import Ingredients from "./ingredients";
+//import {Route,Routes } from "react-router-dom";
+
 const App = () => {
   const [search, setSearch] = useState("");
   const [data,setData]=useState([]);
@@ -33,6 +35,7 @@ const App = () => {
           <input type="submit" value="Search" />
         </form>
         {data.length>=1 ? <Product data={data}/> : null}
+        
       </center>
     </div>
   );

@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import Ingredients from './ingredients';
-//import {Link} from 'react-router-dom';
-//import {BrowserRouter,Route,Routes } from "react-router-dom";
+import {Link} from 'react-router-dom';
+import {Route,Routes } from "react-router-dom";
 //import { Navigate } from 'react-router-dom';
 const Product = ({data}) => {
   const [list,setList]=useState([]);
@@ -11,6 +11,9 @@ const Product = ({data}) => {
   }
   return (
     <div>
+      <Routes>
+            <Route path='/ingredients' exact element={<Ingredients list={list}/>} />
+         </Routes>
       <div className="row">
                 {data.map(data =>  
                 <div className="col-md-3">
@@ -20,15 +23,14 @@ const Product = ({data}) => {
                     <center>
                         <h5 class="card-title">{data.recipe.label}</h5>
                         <p class="card-text">Total Amount Of Calories : {Math.round(data.recipe.calories)}</p>
-                       <a onClick={()=>{setList(data.recipe.ingredients);
-                       }}  class="btn btn-primary">Ingredients</a>
+                       
+                        <Link to="/ingredients"><li onClick={()=>setList(data.recipe.ingredients)} class="btn btn-primary">Ingredients</li></Link>
                         </center>
                     </div>
                     </div>
                 </div>
                 )}
             </div>
-            <Ingredients list={list}/>
     </div>
   )
 }
